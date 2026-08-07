@@ -1,0 +1,2 @@
+/* Theme tokens are intentionally separate so they can be expanded without touching layout. */
+body.islamic-green{--accent:#15803d;--accent2:#55dd7a}body.gold-theme{--accent:#a56a12;--accent2:#eab84a}body.brown-theme{--accent:#7c4828;--accent2:#c9834b}body.white-theme{--paper:#eef3f7;--card:#fff;--ink:#15243a;--muted:#5d6d82;--line:#d7e1eb}

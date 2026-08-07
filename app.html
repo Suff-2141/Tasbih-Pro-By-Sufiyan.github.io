@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="A calm offline digital tasbih counter.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/themes.css">
+  <title>Tasbih Pro — Remember Allah</title>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <header class="topbar"><button class="icon-btn" id="menuBtn" aria-label="Open menu">☰</button><div class="brand"><span>☪</span> Tasbih <b>Pro</b></div><button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♬</button></header>
+    <aside id="drawer" class="drawer" aria-label="Navigation">
+      <div class="drawer-title">Tasbih <b>Pro</b><button id="closeDrawer" aria-label="Close menu">×</button></div>
+      <button data-view="home" class="active">⌂ <span>Counter</span></button><button data-view="tasbihs">☷ <span>My Tasbihs</span></button><button data-view="library">☪ <span>Dhikr Library</span></button><button data-view="history">◷ <span>History</span></button><button data-view="statistics">▥ <span>Statistics</span></button><button data-view="settings">⚙ <span>Settings</span></button>
+      <div class="drawer-foot">Remember Allah. One Tap at a Time.</div>
+    </aside><div id="backdrop" class="backdrop"></div>
+    <main>
+      <section id="home" class="view active">
+        <div class="current-card"><div class="eyebrow">CURRENT TASBIH</div><button class="tasbih-picker" id="tasbihPicker"><span id="currentName">SubhanAllah</span><i>⌄</i></button><div id="arabic" class="arabic">سُبْحَانَ ٱللَّٰهِ</div></div>
+        <div class="counter-wrap"><div class="progress-ring" id="progressRing"><div class="counter-number" id="count" aria-live="polite">0</div><div class="goal-label"><span id="goalText">No goal set</span></div></div></div>
+        <button id="countButton" class="count-button" aria-label="Increase tasbih count"><span>Tap to remember Allah</span><strong>+</strong></button>
+        <div class="counter-actions"><button id="resetCurrent">↺ Reset</button><button id="goalBtn">◎ Set goal</button></div>
+        <div class="mini-stats"><article><span>Today</span><strong id="todayCount">0</strong></article><article><span>Session</span><strong id="sessionCount">0</strong></article><article><span>Lifetime</span><strong id="lifetimeCount">0</strong></article></div>
+        <article class="daily-goal"><div><span>Daily goal</span><strong id="dailyGoalLabel">0 / 1,000</strong></div><button id="dailyGoalBtn" aria-label="Set daily goal">⌄</button><div class="goal-track"><i id="dailyGoalBar"></i></div></article>
+        <div class="home-tools"><button id="noteBtn">✎ Add today’s note</button><button id="fingerModeBtn">☝ Finger mode</button></div>
+        <div class="tip">Swipe on the counter to switch tasbihs</div>
+      </section>
+      <section id="library" class="view"><div class="view-heading"><p class="eyebrow">READY TO REMEMBER</p><h2>Dhikr Library</h2><input id="librarySearch" class="search" placeholder="Search dhikr"></div><div id="libraryList" class="library-list"></div></section>
+      <section id="tasbihs" class="view"><div class="view-heading"><p class="eyebrow">YOUR COLLECTION</p><h2>My Tasbihs</h2><button id="addTasbih" class="primary small">+ Add custom</button></div><div id="tasbihList" class="tasbih-list"></div><h3>Quick presets</h3><div id="presetList" class="preset-list"></div></section>
+      <section id="history" class="view"><div class="view-heading"><p class="eyebrow">YOUR JOURNEY</p><h2>History</h2></div><div id="historyList" class="history-list"></div></section>
+      <section id="statistics" class="view"><div class="view-heading"><p class="eyebrow">YOUR PROGRESS</p><h2>Statistics</h2></div><div class="stat-grid" id="statGrid"></div><div class="chart-card"><h3>Last 7 days</h3><div id="barChart" class="bar-chart"></div></div></section>
+      <section id="settings" class="view"><div class="view-heading"><p class="eyebrow">MAKE IT YOURS</p><h2>Settings</h2></div><div class="settings-list">
+        <label class="setting">Dark appearance <input id="darkMode" type="checkbox" role="switch"><span class="switch"></span></label><label class="setting">AMOLED black <input id="amoledMode" type="checkbox" role="switch"><span class="switch"></span></label><label class="setting">Tap sound <input id="soundSetting" type="checkbox" role="switch"><span class="switch"></span></label><label class="setting">Vibration <input id="vibrateSetting" type="checkbox" role="switch"><span class="switch"></span></label>
+        <div class="setting theme-setting"><span>Theme</span><div id="themeChoices" class="theme-choices"><button data-theme="teal" class="teal active" aria-label="Teal theme"></button><button data-theme="blue" class="blue" aria-label="Blue theme"></button><button data-theme="green" class="green" aria-label="Green theme"></button><button data-theme="black" class="black" aria-label="Black theme"></button></div></div>
+        <button class="setting action" id="exportBtn"><span>Export backup</span><i>JSON ↓</i></button><label class="setting action"><span>Restore backup</span><i>JSON ↑</i><input id="importInput" type="file" accept="application/json" hidden></label><button class="setting action" id="reminderBtn"><span>Daily reminder</span><i>Set time</i></button><button class="setting action danger" id="resetAll"><span>Reset all data</span><i>↺</i></button>
+      </div><div class="about">Tasbih Pro · Version 1.0<br>Offline digital tasbih<br>Made with ♥ by Sufiyan Ahmed S A</div></section>
+    </main>
+    <nav class="bottom-nav"><button data-view="home" class="active">⌂<span>Counter</span></button><button data-view="tasbihs">☷<span>Tasbihs</span></button><button data-view="library">☪<span>Library</span></button><button data-view="history">◷<span>History</span></button><button data-view="settings">⚙<span>Settings</span></button></nav>
+  </div>
+  <dialog id="modal"><form method="dialog" id="modalForm"><button class="modal-close" value="cancel">×</button><div id="modalContent"></div></form></dialog>
+  <script type="module" src="js/app.js"></script>
+</body></html>
